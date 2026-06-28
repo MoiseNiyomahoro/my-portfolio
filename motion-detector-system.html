@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Motion Detector System project by NIYOMAHORO MOISE, covering sensors, alerts, and embedded monitoring logic." />
+    <title>Motion Detector System | NIYOMAHORO MOISE</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="index.html">NIYOMAHORO MOISE</a>
+        <nav aria-label="Primary navigation">
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <section class="container content-section">
+        <p class="eyebrow">Project Detail</p>
+        <h1>Motion Detector System</h1>
+        <p>
+          This project demonstrates a motion detection system designed to monitor space activity and trigger an alert or response under defined conditions.
+        </p>
+      </section>
+
+      <section class="container project-layout">
+        <div class="project-panel">
+          <h2>Overview</h2>
+          <p>The system uses a passive infrared sensor to detect movement and then activates a buzzer, LED, or network notification. It is useful for security monitoring and automation scenarios.</p>
+          <h2>Technologies</h2>
+          <div class="pill-list"><span>Arduino</span><span>PIR Sensor</span><span>LED/Buzzer</span><span>Python</span></div>
+          <h2>Components</h2>
+          <ul class="feature-list"><li>PIR motion sensor</li><li>Microcontroller</li><li>Alert output module</li><li>Optional serial logging</li></ul>
+          <h2>Implementation Details</h2>
+          <p>Detection is processed with a state machine that reduces false positives from brief disturbances. The output actions can be extended to integrate with larger automation systems.</p>
+          <h2>Code Sample</h2>
+          <div class="code-block"><code>if (digitalRead(PIR_PIN) == HIGH) {
+  triggerAlert();
+  logEvent();
+}</code></div>
+        </div>
+        <div class="project-panel">
+          <h2>Visuals</h2>
+          <div class="placeholder">Block diagram placeholder</div>
+          <div class="placeholder">Setup photo placeholder</div>
+          <h2>Challenges</h2>
+          <p>Environmental noise, sensor placement, and sensitivity tuning required iterative adjustments to make the detection practical.</p>
+          <h2>Future Improvements</h2>
+          <p>Future versions could add wireless messaging, remote monitoring, and integration with a central security dashboard.</p>
+          <h2>Repository</h2>
+          <a href="https://github.com/MoiseNiyomahoro/Motion-Detector-System" target="_blank" rel="noreferrer">View original GitHub repository</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <p>© 2026 NIYOMAHORO MOISE. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

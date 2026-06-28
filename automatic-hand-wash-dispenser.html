@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Automatic Hand Wash Dispenser project by NIYOMAHORO MOISE, featuring sensor-based touchless automation and embedded design." />
+    <title>Automatic Hand Wash Dispenser | NIYOMAHORO MOISE</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="index.html">NIYOMAHORO MOISE</a>
+        <nav aria-label="Primary navigation">
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <section class="container content-section">
+        <p class="eyebrow">Project Detail</p>
+        <h1>Automatic Hand Wash Dispenser</h1>
+        <p>
+          This project focuses on a touchless hand-wash system that improves hygiene and convenience by detecting user presence and automating soap or water flow.
+        </p>
+      </section>
+
+      <section class="container project-layout">
+        <div class="project-panel">
+          <h2>Overview</h2>
+          <p>The dispenser uses an ultrasonic or infrared sensor to detect a hand near the nozzle and trigger a controlled motor or pump action. The system is designed to be simple, low-power, and suitable for educational and small-scale deployment.</p>
+          <h2>Technologies</h2>
+          <div class="pill-list"><span>Arduino</span><span>Infrared Sensor</span><span>Servo/Motor Driver</span><span>Embedded C++</span></div>
+          <h2>Components</h2>
+          <ul class="feature-list"><li>Microcontroller board</li><li>Proximity sensor</li><li>Pump or actuator</li><li>Power supply and switching circuit</li></ul>
+          <h2>Implementation Details</h2>
+          <p>Sensor input is read continuously, and the controller activates the actuator for a short interval when motion is detected. Timing, debounce logic, and safe power management are essential to avoid false triggers and excessive usage.</p>
+          <h2>Code Sample</h2>
+          <div class="code-block"><code>if (sensor.detected()) {
+  activatePump();
+  delay(1500);
+  stopPump();
+}</code></div>
+        </div>
+        <div class="project-panel">
+          <h2>Visuals</h2>
+          <div class="placeholder">Architecture diagram placeholder</div>
+          <div class="placeholder">Prototype image placeholder</div>
+          <h2>Challenges</h2>
+          <p>Sensor calibration, water flow control, and reliable power supply design were the main obstacles in the prototype phase.</p>
+          <h2>Future Improvements</h2>
+          <p>Additional enhancements could include IoT notifications, battery backup, and a more compact enclosure with a user-friendly interface.</p>
+          <h2>Repository</h2>
+          <a href="https://github.com/MoiseNiyomahoro/Automatic-Hand-Wash-Dispenser" target="_blank" rel="noreferrer">View original GitHub repository</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <p>© 2026 NIYOMAHORO MOISE. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

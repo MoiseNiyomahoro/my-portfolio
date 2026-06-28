@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Parking System Automation project by NIYOMAHORO MOISE, featuring vehicle detection and automated access control concepts." />
+    <title>Parking System Automation | NIYOMAHORO MOISE</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="index.html">NIYOMAHORO MOISE</a>
+        <nav aria-label="Primary navigation">
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <section class="container content-section">
+        <p class="eyebrow">Project Detail</p>
+        <h1>Parking System Automation</h1>
+        <p>
+          This project explores automation for monitoring parking availability and enabling controlled access using embedded sensing and logic.
+        </p>
+      </section>
+
+      <section class="container project-layout">
+        <div class="project-panel">
+          <h2>Overview</h2>
+          <p>The parking system uses vehicle detection to identify occupancy status and triggers an automated gate or indicator. It demonstrates how simple sensors can support modern access management workflows.</p>
+          <h2>Technologies</h2>
+          <div class="pill-list"><span>Arduino</span><span>Ultrasonic Sensor</span><span>Servo Motor</span><span>Automation Logic</span></div>
+          <h2>Components</h2>
+          <ul class="feature-list"><li>Ultrasonic distance sensor</li><li>Microcontroller</li><li>Gate or barrier actuator</li><li>Status indicator</li></ul>
+          <h2>Implementation Details</h2>
+          <p>Vehicle presence is inferred from measured distance changes. The controller then updates the gate state and can log occupancy information for a central display or further automation.</p>
+          <h2>Code Sample</h2>
+          <div class="code-block"><code>if (distance < threshold) {
+  openBarrier();
+} else {
+  closeBarrier();
+}</code></div>
+        </div>
+        <div class="project-panel">
+          <h2>Visuals</h2>
+          <div class="placeholder">Parking layout placeholder</div>
+          <div class="placeholder">Sensor placement placeholder</div>
+          <h2>Challenges</h2>
+          <p>Reliable detection under varying conditions and stable barrier control were the principal engineering challenges.</p>
+          <h2>Future Improvements</h2>
+          <p>Future enhancements could include occupancy tracking, LED indicators, remote access control, and more advanced analytics.</p>
+          <h2>Repository</h2>
+          <a href="https://github.com/MoiseNiyomahoro/Parking-System-Automation" target="_blank" rel="noreferrer">View original GitHub repository</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <p>© 2026 NIYOMAHORO MOISE. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

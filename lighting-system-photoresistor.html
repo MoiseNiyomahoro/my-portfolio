@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Lighting System with Photoresistor project by NIYOMAHORO MOISE, highlighting adaptive lighting control and embedded sensing." />
+    <title>Lighting System with Photoresistor | NIYOMAHORO MOISE</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="index.html">NIYOMAHORO MOISE</a>
+        <nav aria-label="Primary navigation">
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <section class="container content-section">
+        <p class="eyebrow">Project Detail</p>
+        <h1>Lighting System with Photoresistor</h1>
+        <p>
+          This project uses a photoresistor to sense ambient light and control illumination automatically to support energy efficiency and comfort.
+        </p>
+      </section>
+
+      <section class="container project-layout">
+        <div class="project-panel">
+          <h2>Overview</h2>
+          <p>The lighting system adjusts the brightness or activation of LEDs based on ambient conditions. It is a practical example of sensor-driven automation for smart environments.</p>
+          <h2>Technologies</h2>
+          <div class="pill-list"><span>Arduino</span><span>Photoresistor</span><span>LED Control</span><span>Embedded C++</span></div>
+          <h2>Components</h2>
+          <ul class="feature-list"><li>Photoresistor sensor</li><li>Microcontroller board</li><li>LEDs or lamp driver</li><li>Resistor network</li></ul>
+          <h2>Implementation Details</h2>
+          <p>Ambient light measurements are sampled at intervals and threshold values determine when the lamps should turn on or off. The logic is straightforward but highly effective for energy-conscious deployments.</p>
+          <h2>Code Sample</h2>
+          <div class="code-block"><code>int light = analogRead(LDR_PIN);
+if (light < 400) {
+  digitalWrite(LED_PIN, HIGH);
+}</code></div>
+        </div>
+        <div class="project-panel">
+          <h2>Visuals</h2>
+          <div class="placeholder">Schematic placeholder</div>
+          <div class="placeholder">Lighting demo placeholder</div>
+          <h2>Challenges</h2>
+          <p>Accuracy in low-light conditions and avoiding flicker at threshold transitions were the main development challenges.</p>
+          <h2>Future Improvements</h2>
+          <p>Future iterations might support dimming profiles, daylight scheduling, and app-based control.</p>
+          <h2>Repository</h2>
+          <a href="https://github.com/MoiseNiyomahoro/Lighting-System-Photoresistor" target="_blank" rel="noreferrer">View original GitHub repository</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <p>© 2026 NIYOMAHORO MOISE. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
