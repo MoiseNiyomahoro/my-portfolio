@@ -12,9 +12,14 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="scroll-progress" role="progressbar" aria-label="Page scroll progress"></div>
     <header class="site-header">
       <div class="container nav-wrap">
         <a class="brand" href="index.html">NIYOMAHORO MOISE</a>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
         <nav aria-label="Primary navigation">
           <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
@@ -23,10 +28,11 @@
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </nav>
+        <button class="theme-toggle" aria-label="Switch between dark and light mode" title="Toggle theme">&#9681;</button>
       </div>
     </header>
 
-    <main class="page-shell">
+    <main id="main-content" class="page-shell">
       <section class="container content-section" style="text-align:center;padding:4rem 0">
         <p class="eyebrow">404</p>
         <h1>Page not found</h1>
@@ -39,8 +45,10 @@
 
     <footer class="site-footer">
       <div class="container footer-wrap">
-        <p>&copy; 2026 NIYOMAHORO MOISE. All rights reserved.</p>
+        <p>&copy; <span id="year">2026</span> NIYOMAHORO MOISE. All rights reserved.</p>
       </div>
     </footer>
+    <button class="back-to-top" aria-label="Back to top">&uarr;</button>
+  <script src="script.js"></script>
   </body>
 </html>

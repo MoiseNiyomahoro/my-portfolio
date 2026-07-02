@@ -15,9 +15,14 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="scroll-progress" role="progressbar" aria-label="Page scroll progress"></div>
     <header class="site-header">
       <div class="container nav-wrap">
         <a class="brand" href="index.html">NIYOMAHORO MOISE</a>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
         <nav aria-label="Primary navigation">
           <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
@@ -26,11 +31,12 @@
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </nav>
+        <button class="theme-toggle" aria-label="Switch between dark and light mode" title="Toggle theme">&#9681;</button>
       </div>
     </header>
 
-    <main class="page-shell">
-      <section class="container content-section">
+    <main id="main-content" class="page-shell">
+      <section class="container content-section" data-reveal>
         <p class="eyebrow">Projects</p>
         <h1>Practical systems for smarter spaces and safer operations.</h1>
         <p>
@@ -38,34 +44,43 @@
         </p>
       </section>
 
-      <section class="container content-section alt-section">
+      <section class="container content-section alt-section" data-reveal>
+        <div class="filter-bar">
+          <label for="project-filter" style="font-weight:600">Filter:</label>
+          <select id="project-filter" aria-label="Filter projects by category">
+            <option value="">All projects</option>
+            <option value="automation">Automation</option>
+            <option value="sensor">Sensor</option>
+            <option value="security">Security</option>
+          </select>
+        </div>
         <div class="card-grid">
-          <article class="card">
-            <img src="assets/images/project-handwash.svg" alt="Automatic Hand Wash Dispenser illustration" />
+          <article class="card" data-tags="automation,sensor">
+            <img src="assets/images/project-handwash.svg" alt="Automatic Hand Wash Dispenser illustration" loading="lazy" />
             <div class="card-body">
               <h3>Automatic Hand Wash Dispenser</h3>
               <p>Touchless activation using sensors and automated liquid dispensing.</p>
               <a href="automatic-hand-wash-dispenser.html">Read more</a>
             </div>
           </article>
-          <article class="card">
-            <img src="assets/images/project-motion.svg" alt="Motion Detector System illustration" />
+          <article class="card" data-tags="sensor,security">
+            <img src="assets/images/project-motion.svg" alt="Motion Detector System illustration" loading="lazy" />
             <div class="card-body">
               <h3>Motion Detector System</h3>
               <p>Motion-based monitoring and event triggering for security workflows.</p>
               <a href="motion-detector-system.html">Read more</a>
             </div>
           </article>
-          <article class="card">
-            <img src="assets/images/project-lighting.svg" alt="Lighting System with Photoresistor illustration" />
+          <article class="card" data-tags="automation,sensor">
+            <img src="assets/images/project-lighting.svg" alt="Lighting System with Photoresistor illustration" loading="lazy" />
             <div class="card-body">
               <h3>Lighting System with Photoresistor</h3>
               <p>Adaptive lighting that responds to ambient light for efficiency and comfort.</p>
               <a href="lighting-system-photoresistor.html">Read more</a>
             </div>
           </article>
-          <article class="card">
-            <img src="assets/images/project-parking.svg" alt="Parking System Automation illustration" />
+          <article class="card" data-tags="automation,sensor">
+            <img src="assets/images/project-parking.svg" alt="Parking System Automation illustration" loading="lazy" />
             <div class="card-body">
               <h3>Parking System Automation</h3>
               <p>Vehicle-aware automation for streamlined entry and control systems.</p>
@@ -78,8 +93,10 @@
 
     <footer class="site-footer">
       <div class="container footer-wrap">
-        <p>© 2026 NIYOMAHORO MOISE. All rights reserved.</p>
+        <p>&copy; <span id="year">2026</span> NIYOMAHORO MOISE. All rights reserved.</p>
       </div>
     </footer>
+    <button class="back-to-top" aria-label="Back to top">&uarr;</button>
+  <script src="script.js"></script>
   </body>
 </html>

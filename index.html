@@ -26,9 +26,14 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="scroll-progress" role="progressbar" aria-label="Page scroll progress"></div>
     <header class="site-header">
       <div class="container nav-wrap">
         <a class="brand" href="index.html">NIYOMAHORO MOISE</a>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
         <nav aria-label="Primary navigation">
           <ul class="nav-links">
             <li><a href="index.html" class="active">Home</a></li>
@@ -37,11 +42,12 @@
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </nav>
+        <button class="theme-toggle" aria-label="Switch between dark and light mode" title="Toggle theme">&#9681;</button>
       </div>
     </header>
 
-    <main>
-      <section class="hero">
+    <main id="main-content">
+      <section class="hero" data-reveal>
         <div class="container hero-grid">
           <div class="hero-content">
             <p class="eyebrow">Computer Systems & Network Engineer • Cybersecurity Specialist • IoT Developer</p>
@@ -60,12 +66,12 @@
             </ul>
           </div>
           <div class="hero-visual">
-            <img src="assets/images/hero-illustration.svg" alt="Cybersecurity and IoT illustration" />
+            <img src="assets/images/hero-illustration.svg" alt="Cybersecurity and IoT illustration" loading="lazy" />
           </div>
         </div>
       </section>
 
-      <section class="section">
+      <section class="section" data-reveal>
         <div class="container">
           <div class="section-heading">
             <p class="eyebrow">About Me</p>
@@ -80,7 +86,7 @@
         </div>
       </section>
 
-      <section class="section alt-section">
+      <section class="section alt-section" data-reveal>
         <div class="container">
           <div class="section-heading">
             <p class="eyebrow">Featured Projects</p>
@@ -88,7 +94,7 @@
           </div>
           <div class="card-grid">
             <article class="card">
-              <img src="assets/images/project-handwash.svg" alt="Automatic Hand Wash Dispenser illustration" />
+              <img src="assets/images/project-handwash.svg" alt="Automatic Hand Wash Dispenser illustration" loading="lazy" />
               <div class="card-body">
                 <h3>Automatic Hand Wash Dispenser</h3>
                 <p>Touchless and hygienic dispenser automation with sensor-based activation.</p>
@@ -96,7 +102,7 @@
               </div>
             </article>
             <article class="card">
-              <img src="assets/images/project-motion.svg" alt="Motion Detector System illustration" />
+              <img src="assets/images/project-motion.svg" alt="Motion Detector System illustration" loading="lazy" />
               <div class="card-body">
                 <h3>Motion Detector System</h3>
                 <p>A smart security module that detects movement and triggers an alert workflow.</p>
@@ -104,7 +110,7 @@
               </div>
             </article>
             <article class="card">
-              <img src="assets/images/project-lighting.svg" alt="Lighting System with Photoresistor illustration" />
+              <img src="assets/images/project-lighting.svg" alt="Lighting System with Photoresistor illustration" loading="lazy" />
               <div class="card-body">
                 <h3>Lighting System with Photoresistor</h3>
                 <p>An adaptive lighting solution that responds to ambient light conditions.</p>
@@ -112,7 +118,7 @@
               </div>
             </article>
             <article class="card">
-              <img src="assets/images/project-parking.svg" alt="Parking System Automation illustration" />
+              <img src="assets/images/project-parking.svg" alt="Parking System Automation illustration" loading="lazy" />
               <div class="card-body">
                 <h3>Parking System Automation</h3>
                 <p>Automated vehicle detection and entry management for modern parking facilities.</p>
@@ -123,7 +129,7 @@
         </div>
       </section>
 
-      <section class="section">
+      <section class="section" data-reveal>
         <div class="container split-grid">
           <div>
             <p class="eyebrow">Skills</p>
@@ -148,7 +154,7 @@
 
     <footer class="site-footer">
       <div class="container footer-wrap">
-        <p>© 2026 NIYOMAHORO MOISE. All rights reserved.</p>
+        <p>&copy; <span id="year">2026</span> NIYOMAHORO MOISE. All rights reserved.</p>
         <div class="footer-links">
           <a href="mailto:moise@example.com">Email me</a>
           <a href="https://github.com/MoiseNiyomahoro" target="_blank" rel="noreferrer">GitHub</a>
@@ -156,5 +162,7 @@
         </div>
       </div>
     </footer>
+    <button class="back-to-top" aria-label="Back to top">&uarr;</button>
+  <script src="script.js"></script>
   </body>
 </html>

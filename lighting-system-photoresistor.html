@@ -16,9 +16,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="scroll-progress" role="progressbar" aria-label="Page scroll progress"></div>
     <header class="site-header">
       <div class="container nav-wrap">
         <a class="brand" href="index.html">NIYOMAHORO MOISE</a>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
         <nav aria-label="Primary navigation">
           <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
@@ -27,11 +32,12 @@
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </nav>
+        <button class="theme-toggle" aria-label="Switch between dark and light mode" title="Toggle theme">&#9681;</button>
       </div>
     </header>
 
-    <main class="page-shell">
-      <section class="container content-section">
+    <main id="main-content" class="page-shell">
+      <section class="container content-section" data-reveal>
         <p class="eyebrow">Project Detail</p>
         <h1>Lighting System with Photoresistor</h1>
         <p>
@@ -39,7 +45,7 @@
         </p>
       </section>
 
-      <section class="container project-layout">
+      <section class="container project-layout" data-reveal>
         <div class="project-panel">
           <h2>Overview</h2>
           <p>The lighting system adjusts the brightness or activation of LEDs based on ambient conditions. It is a practical example of sensor-driven automation for smart environments.</p>
@@ -71,9 +77,11 @@ if (light < 400) {
 
     <footer class="site-footer">
       <div class="container footer-wrap">
-        <p>© 2026 NIYOMAHORO MOISE. All rights reserved.</p>
+        <p>&copy; <span id="year">2026</span> NIYOMAHORO MOISE. All rights reserved.</p>
       </div>
     </footer>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <button class="back-to-top" aria-label="Back to top">&uarr;</button>
+  <script src="script.js"></script>
   </body>
 </html>
