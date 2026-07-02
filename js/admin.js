@@ -37,7 +37,7 @@ var Admin = (function () {
     projects.forEach(function (p) {
       var tr = document.createElement("tr");
       tr.innerHTML =
-        '<td><a href="project-detail.html?id=' + p.id + '">' + escapeHtml(p.title) + "</a></td>" +
+        '<td><a href="project_detail.html?id=' + p.id + '">' + escapeHtml(p.title) + "</a></td>" +
         "<td>" + (p.tags || []).map(function (t) { return '<span class="badge badge-tag">' + escapeHtml(t) + "</span>"; }).join(" ") + "</td>" +
         "<td>" + escapeHtml((p.technologies || []).join(", ")) + "</td>" +
         '<td class="col-actions">' +

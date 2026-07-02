@@ -14,21 +14,21 @@ A modern, responsive, and SEO-optimized portfolio website for NIYOMAHORO MOISE, 
 my-portfolio/
 ├── assets/
 │   └── images/
-│       ├── hero-illustration.svg
-│       ├── project-handwash.svg
-│       ├── project-motion.svg
-│       ├── project-lighting.svg
-│       └── project-parking.svg
+│       ├── hero_illustration.svg
+│       ├── project_handwash.svg
+│       ├── project_motion.svg
+│       ├── project_lighting.svg
+│       └── project_parking.svg
 ├── .github/
 │   └── workflows/
 │       └── deploy.yml
 ├── about.html
-├── automatic-hand-wash-dispenser.html
+├── automatic_hand_wash_dispenser.html
 ├── contact.html
 ├── index.html
-├── lighting-system-photoresistor.html
-├── motion-detector-system.html
-├── parking-system-automation.html
+├── lighting_system_photoresistor.html
+├── motion_detector_system.html
+├── parking_system_automation.html
 ├── projects.html
 ├── styles.css
 ├── LICENSE
