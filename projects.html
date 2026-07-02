@@ -54,49 +54,58 @@
             <option value="security">Security</option>
           </select>
         </div>
-        <div class="card-grid">
-          <article class="card" data-tags="automation,sensor">
-            <img src="assets/images/project-handwash.svg" alt="Automatic Hand Wash Dispenser illustration" loading="lazy" />
-            <div class="card-body">
-              <h3>Automatic Hand Wash Dispenser</h3>
-              <p>Touchless activation using sensors and automated liquid dispensing.</p>
-              <a href="automatic-hand-wash-dispenser.html">Read more</a>
-            </div>
-          </article>
-          <article class="card" data-tags="sensor,security">
-            <img src="assets/images/project-motion.svg" alt="Motion Detector System illustration" loading="lazy" />
-            <div class="card-body">
-              <h3>Motion Detector System</h3>
-              <p>Motion-based monitoring and event triggering for security workflows.</p>
-              <a href="motion-detector-system.html">Read more</a>
-            </div>
-          </article>
-          <article class="card" data-tags="automation,sensor">
-            <img src="assets/images/project-lighting.svg" alt="Lighting System with Photoresistor illustration" loading="lazy" />
-            <div class="card-body">
-              <h3>Lighting System with Photoresistor</h3>
-              <p>Adaptive lighting that responds to ambient light for efficiency and comfort.</p>
-              <a href="lighting-system-photoresistor.html">Read more</a>
-            </div>
-          </article>
-          <article class="card" data-tags="automation,sensor">
-            <img src="assets/images/project-parking.svg" alt="Parking System Automation illustration" loading="lazy" />
-            <div class="card-body">
-              <h3>Parking System Automation</h3>
-              <p>Vehicle-aware automation for streamlined entry and control systems.</p>
-              <a href="parking-system-automation.html">Read more</a>
-            </div>
-          </article>
-        </div>
+        <div class="card-grid" id="proj-cards"></div>
+        <p class="admin-empty" id="proj-cards-empty" style="display:none">No projects match the selected filter.</p>
       </section>
     </main>
 
     <footer class="site-footer">
       <div class="container footer-wrap">
         <p>&copy; <span id="year">2026</span> NIYOMAHORO MOISE. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="admin.html" style="opacity:0.5">Admin</a>
+        </div>
       </div>
     </footer>
     <button class="back-to-top" aria-label="Back to top">&uarr;</button>
+  <script src="js/data.js"></script>
+  <script>
+  (function () {
+    function renderProjects() {
+      var projects = Store.getProjects();
+      var grid = document.getElementById("proj-cards");
+      var empty = document.getElementById("proj-cards-empty");
+      var filter = document.getElementById("project-filter");
+      grid.innerHTML = "";
+      var val = filter ? filter.value : "";
+      var filtered = val ? projects.filter(function (p) { return (p.tags || []).indexOf(val) !== -1; }) : projects;
+      if (!filtered.length) {
+        empty.style.display = "";
+        return;
+      }
+      empty.style.display = "none";
+      filtered.forEach(function (p) {
+        var img = p.image ? 'assets/images/' + p.image : "";
+        var card = document.createElement("article");
+        card.className = "card";
+        card.innerHTML =
+          (img ? '<img src="' + img + '" alt="' + p.title + ' illustration" loading="lazy">' : "") +
+          '<div class="card-body">' +
+          "<h3>" + p.title + "</h3>" +
+          "<p>" + p.description + "</p>" +
+          '<a href="project-detail.html?id=' + p.id + '">Read more</a>' +
+          "</div>";
+        grid.appendChild(card);
+      });
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", renderProjects);
+    } else {
+      renderProjects();
+    }
+    document.getElementById("project-filter").addEventListener("change", renderProjects);
+  })();
+  </script>
   <script src="script.js"></script>
   </body>
 </html>

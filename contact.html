@@ -67,7 +67,7 @@
       <section class="container content-section" data-reveal>
         <p class="eyebrow">Send a Message</p>
         <h2>Or use the form below</h2>
-        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="max-width:600px;margin-top:1.5rem">
+        <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="max-width:600px;margin-top:1.5rem">
           <!-- TODO: Replace YOUR_FORM_ID with your actual Formspree endpoint ID (https://formspree.io) -->
           <div class="form-group">
             <label for="name">Name</label>
@@ -81,14 +81,32 @@
             <label for="message">Message</label>
             <textarea id="message" name="message" rows="5" required></textarea>
           </div>
-          <button type="submit" class="btn btn-primary">Send Message</button>
+          <div class="form-controls">
+            <button type="submit" class="btn btn-primary" id="msg-submit-btn">Send Message</button>
+            <span id="msg-status" style="align-self:center"></span>
+          </div>
         </form>
+        <script src="js/data.js"></script>
+        <script>
+        document.getElementById("contact-form").addEventListener("submit", function (e) {
+          var name = document.getElementById("name").value.trim();
+          var email = document.getElementById("email").value.trim();
+          var message = document.getElementById("message").value.trim();
+          if (name && email && message) {
+            Store.addMessage({ name: name, email: email, message: message });
+          }
+          // Formspree will handle the actual POST for email delivery
+        });
+        </script>
       </section>
     </main>
 
     <footer class="site-footer">
       <div class="container footer-wrap">
         <p>&copy; <span id="year">2026</span> NIYOMAHORO MOISE. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="admin.html" style="opacity:0.5">Admin</a>
+        </div>
       </div>
     </footer>
     <button class="back-to-top" aria-label="Back to top">&uarr;</button>

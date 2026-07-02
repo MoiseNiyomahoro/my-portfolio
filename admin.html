@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Admin panel for NIYOMAHORO MOISE Portfolio" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Admin | NIYOMAHORO MOISE</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="scroll-progress" role="progressbar" aria-label="Page scroll progress"></div>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="index.html">NIYOMAHORO MOISE</a>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <nav aria-label="Primary navigation">
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <button class="theme-toggle" aria-label="Switch between dark and light mode" title="Toggle theme">&#9681;</button>
+      </div>
+    </header>
+
+    <main id="main-content" class="page-shell">
+      <section class="container">
+        <p class="eyebrow">Admin</p>
+        <h1>Portfolio management</h1>
+
+        <!-- Tabs -->
+        <div class="admin-tabs" role="tablist">
+          <button class="admin-tab active" role="tab" aria-selected="true" data-tab="projects" id="tab-projects">Projects</button>
+          <button class="admin-tab" role="tab" aria-selected="false" data-tab="messages" id="tab-messages">Messages <span class="badge" id="msg-count" style="display:none">0</span></button>
+          <button class="admin-tab" role="tab" aria-selected="false" data-tab="settings" id="tab-settings">Settings</button>
+        </div>
+
+        <!-- ==================== PROJECTS TAB ==================== -->
+        <div class="admin-panel active" id="panel-projects" role="tabpanel" aria-labelledby="tab-projects">
+          <div class="admin-toolbar">
+            <span id="proj-count" class="admin-count"></span>
+            <button class="btn btn-primary" onclick="Admin.showProjectModal()">+ Add Project</button>
+          </div>
+          <div class="table-wrap">
+            <table class="admin-table" id="proj-table">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Tags</th>
+                  <th>Technologies</th>
+                  <th class="col-actions">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="proj-tbody"></tbody>
+            </table>
+          </div>
+          <p class="admin-empty" id="proj-empty" style="display:none">No projects yet. Add your first one!</p>
+        </div>
+
+        <!-- ==================== MESSAGES TAB ==================== -->
+        <div class="admin-panel" id="panel-messages" role="tabpanel" aria-labelledby="tab-messages">
+          <div class="admin-toolbar">
+            <span id="msg-count-label" class="admin-count"></span>
+          </div>
+          <div class="table-wrap">
+            <table class="admin-table" id="msg-table">
+              <thead>
+                <tr>
+                  <th>From</th>
+                  <th>Email</th>
+                  <th>Date</th>
+                  <th>Message</th>
+                  <th class="col-actions">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="msg-tbody"></tbody>
+            </table>
+          </div>
+          <p class="admin-empty" id="msg-empty" style="display:none">No messages yet.</p>
+        </div>
+
+        <!-- ==================== SETTINGS TAB ==================== -->
+        <div class="admin-panel" id="panel-settings" role="tabpanel" aria-labelledby="tab-settings">
+          <h2>Data Management</h2>
+          <div class="settings-grid">
+            <div class="settings-card">
+              <h3>Export data</h3>
+              <p>Download all portfolio data as a JSON file for backup.</p>
+              <button class="btn btn-secondary" onclick="Admin.exportData()">Download JSON</button>
+            </div>
+            <div class="settings-card">
+              <h3>Import data</h3>
+              <p>Restore data from a previously exported JSON file.</p>
+              <input type="file" id="import-file" accept=".json" style="display:none" onchange="Admin.importData(event)">
+              <button class="btn btn-secondary" onclick="document.getElementById('import-file').click()">Upload JSON</button>
+            </div>
+            <div class="settings-card">
+              <h3>Reset to defaults</h3>
+              <p>Restore the original 4 sample projects and clear all messages. This cannot be undone.</p>
+              <button class="btn btn-secondary" style="border-color:var(--accent)" onclick="Admin.resetData()">Reset Data</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ==================== PROJECT MODAL ==================== -->
+    <div class="modal-overlay" id="project-modal" style="display:none">
+      <div class="modal">
+        <div class="modal-header">
+          <h2 id="modal-title">Add Project</h2>
+          <button class="modal-close" onclick="Admin.closeProjectModal()" aria-label="Close">&times;</button>
+        </div>
+        <form id="project-form" onsubmit="return Admin.saveProject(event)">
+          <input type="hidden" id="proj-id">
+          <div class="modal-body">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="proj-title">Title *</label>
+                <input type="text" id="proj-title" required>
+              </div>
+              <div class="form-group">
+                <label for="proj-image">Image filename</label>
+                <input type="text" id="proj-image" placeholder="project-image.svg">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="proj-desc">Short description *</label>
+              <textarea id="proj-desc" rows="2" required></textarea>
+            </div>
+            <div class="form-group">
+              <label for="proj-fulldesc">Full description</label>
+              <textarea id="proj-fulldesc" rows="3"></textarea>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="proj-tags">Tags (comma-separated)</label>
+                <input type="text" id="proj-tags" placeholder="automation, sensor">
+              </div>
+              <div class="form-group">
+                <label for="proj-repo">Repository URL</label>
+                <input type="url" id="proj-repo" placeholder="https://github.com/...">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="proj-tech">Technologies (comma-separated)</label>
+              <input type="text" id="proj-tech" placeholder="Arduino, Infrared Sensor">
+            </div>
+            <div class="form-group">
+              <label for="proj-components">Components (comma-separated)</label>
+              <input type="text" id="proj-components" placeholder="Microcontroller board, Proximity sensor">
+            </div>
+            <div class="form-group">
+              <label for="proj-challenges">Challenges</label>
+              <textarea id="proj-challenges" rows="2"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="proj-future">Future Improvements</label>
+              <textarea id="proj-future" rows="2"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="proj-code">Code sample</label>
+              <textarea id="proj-code" rows="4" class="code-textarea" placeholder="if (sensor.detected()) { ..."></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="Admin.closeProjectModal()">Cancel</button>
+            <button type="submit" class="btn btn-primary" id="modal-save-btn">Save Project</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- ==================== MESSAGE MODAL ==================== -->
+    <div class="modal-overlay" id="message-modal" style="display:none">
+      <div class="modal">
+        <div class="modal-header">
+          <h2>Message</h2>
+          <button class="modal-close" onclick="Admin.closeMessageModal()" aria-label="Close">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p><strong>From:</strong> <span id="msg-view-name"></span></p>
+          <p><strong>Email:</strong> <span id="msg-view-email"></span></p>
+          <p><strong>Date:</strong> <span id="msg-view-date"></span></p>
+          <p><strong>Message:</strong></p>
+          <div id="msg-view-body" class="msg-body"></div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" onclick="Admin.closeMessageModal()">Close</button>
+          <button class="btn btn-primary" id="msg-delete-btn" onclick="Admin.deleteMessage(this.dataset.id)">Delete</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <p>&copy; <span id="year">2026</span> NIYOMAHORO MOISE. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="admin.html" style="opacity:0.5">Admin</a>
+        </div>
+      </div>
+    </footer>
+    <button class="back-to-top" aria-label="Back to top">&uarr;</button>
+  <script src="js/data.js"></script>
+  <script src="js/admin.js"></script>
+  <script src="script.js"></script>
+  </body>
+</html>

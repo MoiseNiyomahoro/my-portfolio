@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Project detail page" />
+    <title>Project | NIYOMAHORO MOISE</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="scroll-progress" role="progressbar" aria-label="Page scroll progress"></div>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="index.html">NIYOMAHORO MOISE</a>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <nav aria-label="Primary navigation">
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="projects.html" class="active">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <button class="theme-toggle" aria-label="Switch between dark and light mode" title="Toggle theme">&#9681;</button>
+      </div>
+    </header>
+
+    <main id="main-content" class="page-shell">
+      <section class="container content-section" data-reveal id="detail-header">
+        <p class="eyebrow">Project Detail</p>
+        <h1 id="detail-title"></h1>
+        <p id="detail-desc"></p>
+      </section>
+
+      <section class="container project-layout" data-reveal>
+        <div class="project-panel" id="detail-main"></div>
+        <div class="project-panel" id="detail-sidebar"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <p>&copy; <span id="year">2026</span> NIYOMAHORO MOISE. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="projects.html">&larr; Back to Projects</a>
+          <a href="admin.html" style="opacity:0.5">Admin</a>
+        </div>
+      </div>
+    </footer>
+    <button class="back-to-top" aria-label="Back to top">&uarr;</button>
+  <script src="js/data.js"></script>
+  <script>
+  (function () {
+    function loadProject() {
+      var id = new URLSearchParams(window.location.search).get("id");
+      if (!id) {
+        document.getElementById("main-content").innerHTML =
+          '<section class="container content-section" style="text-align:center;padding:4rem 0">' +
+          '<p class="eyebrow">Error</p><h1>Project not found</h1>' +
+          '<p>No project ID specified.</p>' +
+          '<a class="btn btn-primary" href="projects.html">Back to Projects</a></section>';
+        return;
+      }
+      var p = Store.getProject(id);
+      if (!p) {
+        document.getElementById("main-content").innerHTML =
+          '<section class="container content-section" style="text-align:center;padding:4rem 0">' +
+          '<p class="eyebrow">Error</p><h1>Project not found</h1>' +
+          '<p>The project "' + id + '" does not exist.</p>' +
+          '<a class="btn btn-primary" href="projects.html">Back to Projects</a></section>';
+        return;
+      }
+      document.title = p.title + " | NIYOMAHORO MOISE";
+      var descMeta = document.querySelector('meta[name="description"]');
+      if (descMeta) descMeta.content = p.description;
+
+      document.getElementById("detail-title").textContent = p.title;
+      document.getElementById("detail-desc").textContent = p.fullDescription || p.description;
+
+      var tech = (p.technologies || []).length
+        ? '<div class="pill-list">' + p.technologies.map(function (t) { return "<span>" + t + "</span>"; }).join("") + "</div>"
+        : "";
+      var comps = (p.components || []).length
+        ? "<ul class='feature-list'>" + p.components.map(function (c) { return "<li>" + c + "</li>"; }).join("") + "</ul>"
+        : "";
+      var code = p.codeSample
+        ? '<h2>Code Sample</h2><div class="code-block"><pre><code class="language-cpp">' + escapeHtml(p.codeSample) + "</code></pre></div>"
+        : "";
+
+      document.getElementById("detail-main").innerHTML =
+        "<h2>Overview</h2><p>" + (p.fullDescription || p.description) + "</p>" +
+        (tech ? "<h2>Technologies</h2>" + tech : "") +
+        (comps ? "<h2>Components</h2>" + comps : "") +
+        (p.challenges ? "<h2>Challenges</h2><p>" + p.challenges + "</p>" : "") +
+        code;
+
+      document.getElementById("detail-sidebar").innerHTML =
+        '<h2>Repository</h2>' +
+        (p.repo ? '<p><a href="' + p.repo + '" target="_blank" rel="noreferrer">View on GitHub</a></p>' : '<p>Not available</p>') +
+        (p.futureImprovements ? "<h2>Future Improvements</h2><p>" + p.futureImprovements + "</p>" : "") +
+        "<h2>Manage</h2>" +
+        '<p><a class="btn btn-secondary" href="admin.html">Edit in Admin Panel</a></p>';
+
+      if (typeof Prism !== "undefined") Prism.highlightAll();
+    }
+    function escapeHtml(s) {
+      if (!s) return "";
+      var d = document.createElement("div");
+      d.appendChild(document.createTextNode(s));
+      return d.innerHTML;
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", loadProject);
+    } else {
+      loadProject();
+    }
+  })();
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script>if (typeof Prism !== "undefined") Prism.highlightAll();</script>
+  <script src="script.js"></script>
+  </body>
+</html>
