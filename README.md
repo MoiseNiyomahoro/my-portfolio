@@ -1,6 +1,6 @@
-# NIYOMAHORO MOISE Portfolio
+# Moise NIYOMAHORO Portfolio
 
-A modern, responsive, and SEO-optimized portfolio website for NIYOMAHORO MOISE, a Computer Systems & Network Engineer, Cybersecurity Specialist, and IoT Developer.
+A modern, responsive, and SEO-optimized portfolio website for Moise NIYOMAHORO, a Computer Systems & Network Engineer, Cybersecurity Specialist, and IoT Developer.
 
 ## Features
 - Responsive HTML5 and CSS3 website
