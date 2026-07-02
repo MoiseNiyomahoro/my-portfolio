@@ -4,8 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Motion Detector System project by NIYOMAHORO MOISE, covering sensors, alerts, and embedded monitoring logic." />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta property="og:title" content="Motion Detector System | NIYOMAHORO MOISE" />
+    <meta property="og:description" content="Motion Detector System project by NIYOMAHORO MOISE, covering sensors, alerts, and embedded monitoring logic." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://moiseniyomahoro.github.io/my-portfolio/motion-detector-system.html" />
+    <meta property="og:image" content="https://moiseniyomahoro.github.io/my-portfolio/assets/images/project-motion.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
     <title>Motion Detector System | NIYOMAHORO MOISE</title>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
   </head>
   <body>
     <header class="site-header">
@@ -42,15 +50,15 @@
           <h2>Implementation Details</h2>
           <p>Detection is processed with a state machine that reduces false positives from brief disturbances. The output actions can be extended to integrate with larger automation systems.</p>
           <h2>Code Sample</h2>
-          <div class="code-block"><code>if (digitalRead(PIR_PIN) == HIGH) {
+          <div class="code-block"><pre><code class="language-cpp">if (digitalRead(PIR_PIN) == HIGH) {
   triggerAlert();
   logEvent();
-}</code></div>
+}</code></pre></div>
         </div>
         <div class="project-panel">
           <h2>Visuals</h2>
-          <div class="placeholder">Block diagram placeholder</div>
-          <div class="placeholder">Setup photo placeholder</div>
+          <div class="placeholder">[Block diagram — add diagram showing PIR sensor, microcontroller, and alert output flow]</div>
+          <div class="placeholder">[Setup photo — add image of the motion detector prototype on a breadboard]</div>
           <h2>Challenges</h2>
           <p>Environmental noise, sensor placement, and sensitivity tuning required iterative adjustments to make the detection practical.</p>
           <h2>Future Improvements</h2>
@@ -66,5 +74,6 @@
         <p>© 2026 NIYOMAHORO MOISE. All rights reserved.</p>
       </div>
     </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
   </body>
 </html>

@@ -4,8 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Lighting System with Photoresistor project by NIYOMAHORO MOISE, highlighting adaptive lighting control and embedded sensing." />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta property="og:title" content="Lighting System with Photoresistor | NIYOMAHORO MOISE" />
+    <meta property="og:description" content="Lighting System with Photoresistor project by NIYOMAHORO MOISE, highlighting adaptive lighting control and embedded sensing." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://moiseniyomahoro.github.io/my-portfolio/lighting-system-photoresistor.html" />
+    <meta property="og:image" content="https://moiseniyomahoro.github.io/my-portfolio/assets/images/project-lighting.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
     <title>Lighting System with Photoresistor | NIYOMAHORO MOISE</title>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
   </head>
   <body>
     <header class="site-header">
@@ -42,15 +50,15 @@
           <h2>Implementation Details</h2>
           <p>Ambient light measurements are sampled at intervals and threshold values determine when the lamps should turn on or off. The logic is straightforward but highly effective for energy-conscious deployments.</p>
           <h2>Code Sample</h2>
-          <div class="code-block"><code>int light = analogRead(LDR_PIN);
+          <div class="code-block"><pre><code class="language-cpp">int light = analogRead(LDR_PIN);
 if (light < 400) {
   digitalWrite(LED_PIN, HIGH);
-}</code></div>
+}</code></pre></div>
         </div>
         <div class="project-panel">
           <h2>Visuals</h2>
-          <div class="placeholder">Schematic placeholder</div>
-          <div class="placeholder">Lighting demo placeholder</div>
+          <div class="placeholder">[Schematic — add circuit diagram showing photoresistor voltage divider and LED output]</div>
+          <div class="placeholder">[Lighting demo — add photo or GIF showing the LED response to changing ambient light]</div>
           <h2>Challenges</h2>
           <p>Accuracy in low-light conditions and avoiding flicker at threshold transitions were the main development challenges.</p>
           <h2>Future Improvements</h2>
@@ -66,5 +74,6 @@ if (light < 400) {
         <p>© 2026 NIYOMAHORO MOISE. All rights reserved.</p>
       </div>
     </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
   </body>
 </html>
