@@ -14,7 +14,6 @@ var Store = (function () {
         challenges: "Sensor calibration, water flow control, and reliable power supply design were the main obstacles in the prototype phase.",
         futureImprovements: "Additional enhancements could include IoT notifications, battery backup, and a more compact enclosure with a user-friendly interface.",
         codeSample: "if (sensor.detected()) {\n  activatePump();\n  delay(1500);\n  stopPump();\n}",
-        image: "project_handwash.svg",
         repo: "https://github.com/MoiseNiyomahoro/Automatic-Hand-Wash-Dispenser"
       },
       {
@@ -28,7 +27,6 @@ var Store = (function () {
         challenges: "Environmental noise, sensor placement, and sensitivity tuning required iterative adjustments to make the detection practical.",
         futureImprovements: "Future versions could add wireless messaging, remote monitoring, and integration with a central security dashboard.",
         codeSample: "if (digitalRead(PIR_PIN) == HIGH) {\n  triggerAlert();\n  logEvent();\n}",
-        image: "project_motion.svg",
         repo: "https://github.com/MoiseNiyomahoro/Motion-Detector-System"
       },
       {
@@ -42,7 +40,6 @@ var Store = (function () {
         challenges: "Accuracy in low-light conditions and avoiding flicker at threshold transitions were the main development challenges.",
         futureImprovements: "Future iterations might support dimming profiles, daylight scheduling, and app-based control.",
         codeSample: "int light = analogRead(LDR_PIN);\nif (light < 400) {\n  digitalWrite(LED_PIN, HIGH);\n}",
-        image: "project_lighting.svg",
         repo: "https://github.com/MoiseNiyomahoro/Lighting-System-Photoresistor"
       },
       {
@@ -56,7 +53,6 @@ var Store = (function () {
         challenges: "Reliable detection under varying conditions and stable barrier control were the principal engineering challenges.",
         futureImprovements: "Future enhancements could include occupancy tracking, LED indicators, remote access control, and more advanced analytics.",
         codeSample: "if (distance < threshold) {\n  openBarrier();\n} else {\n  closeBarrier();\n}",
-        image: "project_parking.svg",
         repo: "https://github.com/MoiseNiyomahoro/Parking-System-Automation"
       }
     ],
